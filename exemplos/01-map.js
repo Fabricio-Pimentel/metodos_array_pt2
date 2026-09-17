@@ -43,3 +43,17 @@ const produtosBanco = [
 ];
 
 // Regra de Back-End: formatar preço para o cliente e omitir dados sensíveis (custo interno)
+
+const repostaApiPublica = produtosBanco.map ((produtos) => {
+    return {
+        id: produtos.id,
+        titulo: produtos.nome.toUpperCase(),
+        precoFormato: `R$ ${produtos.preco.toFixed(2)}`,
+        disponivel: produtos.estoque > 0
+    };
+});
+
+console.log ("Respostasda API (Sem custo interno):");
+console.log(repostaApiPublica);
+
+//fim
