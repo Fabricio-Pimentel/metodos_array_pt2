@@ -38,11 +38,12 @@ const usuariosBanco = [
 ];
 
 function buscarUsuarioPorId(idRequisitado) {
-  const usuario = usuariosBanco.find((u) => u.id === idRequisitado);
+    const usuario = usuariosBanco.find((u) => u.id === idRequisitado);
 
-  if (!usuario) {
-    return {
-      status: 404,
-      mensagem: `Erro: Usuário com ID ${idRequisitado} não foi encontrado.`
-    };
-  }
+    if (!usuario) {
+        return {
+            status: 404,
+            mensagem: `Erro: Usuário com ID ${idRequisitado} não foi encontrado.`
+        };
+    }
+}

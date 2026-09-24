@@ -1,0 +1,61 @@
+console.log('=== 🔄 EXEMPLOS COM findIndex() ===\n');
+
+// -------------------------------------------------------------------------
+// Exemplo 1 (Básico): Posição de um valor primitivo
+// -------------------------------------------------------------------------
+console.log("---Exemplo 1: posição dop primeiro maio de idade (Básico)---")
+
+const idades = [12, 15, 17, 28, 25];
+
+const indiceMaiorDeIdade = idades.findIndex((idade) => idade >= 18);
+
+console.log("Idades:", idades)
+console.log(`Primeiro maior de idade está no indice: ${indiceMaiorDeIdade} (valor: ${idades[indiceMaiorDeIdade]})`);
+console.log("\n");
+
+// -------------------------------------------------------------------------
+// Exemplo 2 (intermediario): localizar posição de um usuario por ID
+// -------------------------------------------------------------------------
+console.log("--- Exemplo 2: Posição de objeto por ID (intermediario) ---");
+
+const usuarios = [
+    { id: 10, nome: "Carla" },
+    { id: 25, nome: "Diego" },
+    { id: 32, nome: "Fernanda" }
+];
+
+const indiceDiego = usuarios.findIndex((u) => u.id === 25);
+
+console.log("Índice do usuário ID 25:", indiceDiego);
+console.log("Elemento encontrado na posição:", usuarios[indiceDiego]);
+console.log("\n");
+
+// -------------------------------------------------------------------------
+// Exemplo 3 (back-end real): Exclusão em rota DELETE /produtos/:id com splice()
+// -------------------------------------------------------------------------
+console.log("---- Exemplo 3: Remover itemdo banco simulado (Back-End Real) ---");
+
+const estoque = [
+    { id: 101, nome: "Teclado", preco: 150 },
+    { id: 102, nome: "Mouse", preco: 80 },
+    { id: 103, nome: "MousePad", preco: 40 }
+];
+
+function deletarProdutoPorId(id) {
+    const index = estoque.findIndex((item) => item.id === id);
+
+    if (index === -1) {
+        return { status: 404, mensagem: "Produto não localizado para exclusão." };
+    }
+
+    //Remove exatamente 1 elemento na posição encontrada
+    const [removido] = estoque.splice(index, 1);
+
+    return {
+        status: 200,
+        mensagem: `Produto '${removido.nome}' removido com sucesso!`,
+        estoqueAtualizado: estoque
+    };
+}
+console.log(deletarProdutoPorId(102));
+//fim
