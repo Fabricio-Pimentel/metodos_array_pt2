@@ -7,6 +7,4 @@ const produtos = [
 
 const precosuperior = produtos.some((preco) => preco.preco > 3000);
 
-const {preco} = produtos;
-
 console.log (`Há um preço maior que R$ 3000,00? ${precosuperior}`);
